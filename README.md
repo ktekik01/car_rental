@@ -51,49 +51,49 @@ FLASK_ENV=development
 ## Running Locally
 
 1. **Clone the repo**:
+````
 
-   ```bash
-   ```
+git clone -b main https://github.com/ktekik01/car_rental.git 
 
-git clone <repo-url>
 cd car\_rental\_system
 
 ````
 
 2. **Set up a Python virtual environment**:
-   ```bash
+
+```bash
 python -m venv venv
 source venv/bin/activate   # Windows: venv\\Scripts\\activate
 ````
 
 3. **Install dependencies**:
 
-   ```bash
-   ```
+````
 
 pip install -r requirements.txt
 
 ````
 
 4. **Initialize the database**:
-   ```bash
-# create the database\psql -U postgres -c "CREATE DATABASE car_rental;"
+
+```bash
+
+psql -U postgres -c "CREATE DATABASE car_rental;"
 flask db init       # only first-time
 flask db migrate -m "Initial schema"
 flask db upgrade
 ````
 
 5. **(Optional) Seed data**:
-
-   ```bash
-   ```
+````
 
 python seed.py
 
 ````
 
 6. **Run the server**:
-   ```bash
+
+```bash
 flask run
 ````
 
@@ -103,15 +103,15 @@ Your API will be live at `http://localhost:5000`.
 
 1. **Build & start containers**:
 
-   ```bash
-   ```
+````
 
 docker-compose up -d
 
 ````
 
 2. **Wait for Postgres to be ready**, then inside the `web` container run migrations & optional seed:
-   ```bash
+
+```bash
 docker-compose exec web flask db upgrade
 # Optional seed
 # docker-compose exec web python seed.py
@@ -121,9 +121,7 @@ docker-compose exec web flask db upgrade
 
 4. **Stop containers**:
 
-   ```bash
-   ```
-
+```
 docker-compose down
 
 ```
@@ -133,6 +131,7 @@ docker-compose down
 All endpoints use Basic Authentication. Register (`POST /register`) and then include your credentials in subsequent requests.
 
 Core endpoints:
+
 - `POST /register` – create user or merchant
 - `GET  /login` – verify credentials
 - `GET  /cars` – list all cars (paginated)
@@ -154,4 +153,7 @@ Import the following URL into Postman to load all requests (replace with your pu
 
 ```
 
-\<https://web.postman.co/workspace/b9a192d7-ad9c-4716-8cbc-8beda5d9fca4/collection/42228276-ebf9441b-a581-4c2f-a451-7ba540067f0e?action=share&source=copy-link&creator=42228276>
+https://web.postman.co/workspace/b9a192d7-ad9c-4716-8cbc-8beda5d9fca4/collection/42228276-ebf9441b-a581-4c2f-a451-7ba540067f0e?action=share&source=copy-link&creator=42228276
+
+```
+```
