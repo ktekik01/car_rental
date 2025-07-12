@@ -1,0 +1,16 @@
+# Web framework
+Flask>=2.2.5
+
+# ORM & migrations
+Flask-SQLAlchemy>=3.0.3
+Flask-Migrate>=4.0.4
+alembic>=1.10.0
+
+# PostgreSQL driver
+psycopg2-binary>=2.9.7
+
+# Environment variable loader
+python-dotenv>=0.21.0
+
+# Production WSGI server (optional)
+gunicorn>=20.1.0

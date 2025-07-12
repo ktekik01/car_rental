@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: YOUR_DB_PASSWORD
+      POSTGRES_DB: car_rental
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  web:
+    build: .
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    environment:
+      # point SQLAlchemy at the Postgres service
+      DATABASE_URL: "postgresql://postgres:YOUR_DB_PASSWORD@db:5432/car_rental"
+      # ensure migrations use the correct DB URL
+      FLASK_APP: app.py
+      FLASK_ENV: production
+
+volumes:
+  db_data:
