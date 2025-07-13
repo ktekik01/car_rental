@@ -6,7 +6,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: YOUR_DB_PASSWORD
+      POSTGRES_PASSWORD: a1s2d3f4g5h6kt01A
       POSTGRES_DB: car_rental
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -22,7 +22,7 @@ services:
       - "5000:5000"
     environment:
       # point SQLAlchemy at the Postgres service
-      DATABASE_URL: "postgresql://postgres:YOUR_DB_PASSWORD@db:5432/car_rental"
+      DATABASE_URL: "postgresql://postgres:a1s2d3f4g5h6kt01A@db:5432/car_rental"
       # ensure migrations use the correct DB URL
       FLASK_APP: app.py
       FLASK_ENV: production

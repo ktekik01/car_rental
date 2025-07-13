@@ -84,7 +84,7 @@ flask db migrate -m "Initial schema"
 flask db upgrade
 ````
 
-5. **(Optional) Seed data**:
+5. **(Optional) Seed data strongly recommended**:
 ````
 
 python seed.py
@@ -100,6 +100,11 @@ flask run
 Your API will be live at `http://localhost:5000`.
 
 ## Running with Docker
+
+0. **Important note: Probably, you won't be able to see your data on 
+pgAdmin since you have a server running on  port5432. Change your db server's port on pgAdmin from port5432 to port5433. 
+
+0. ** Thereby, you can see your data on pgAdmin
 
 1. **Build & start containers**:
 
@@ -132,18 +137,33 @@ All endpoints use Basic Authentication. Register (`POST /register`) and then inc
 
 Core endpoints:
 
-- `POST /register` – create user or merchant
-- `GET  /login` – verify credentials
-- `GET  /cars` – list all cars (paginated)
-- `POST /cars` – create a car (merchant only)
-- `PUT  /cars/:id` – update a car (merchant only)
-- `DELETE /cars/:id` – delete a car (merchant only)
-- `POST /rentals` – rent a car (user only)
-- `PUT  /rentals/:id/return` – return your rental (user only)
-- `GET  /merchants/:id/cars` – list any merchant’s cars (paginated)
-- `GET  /merchants/me/cars` – list your cars (paginated, merchant only)
-- `GET  /merchants/me/rentals` – view rentals of your cars (merchant only)
-- `GET  /users/:id/rentals` – view your rental history (user only)
+Auth
+
+POST /register – register a new user or merchant
+
+POST /login – verify credentials (Basic-Auth)
+
+Cars
+
+GET /cars – list all cars (paginated)
+
+POST /cars – create a new car (merchant only)
+
+PUT /cars/:car_id – update a car (merchant only)
+
+DELETE /cars/:car_id – delete a car (merchant only)
+
+GET /merchants/:merchant_id/cars – list any merchant’s cars (paginated)
+
+Rentals
+
+POST /rentals – create a rental (user only)
+
+PUT /rentals/:rental_id/return – return your rental (user only)
+
+GET /merchants/me/rentals – view rentals of your cars (merchant only)
+
+GET /users/:user_id/rentals – view your rental history (user only)
 
 Refer to the Postman collection for examples.
 
@@ -153,7 +173,8 @@ Import the following URL into Postman to load all requests (replace with your pu
 
 ```
 
-https://web.postman.co/workspace/b9a192d7-ad9c-4716-8cbc-8beda5d9fca4/collection/42228276-ebf9441b-a581-4c2f-a451-7ba540067f0e?action=share&source=copy-link&creator=42228276
+https://planetary-station-855740.postman.co/workspace/My-Workspace~b9a192d7-ad9c-4716-8cbc-8beda5d9fca4/collection/42228276-bc2100b6-ceac-46ac-941f-15d737cd3c49?action=share&creator=42228276
 
 ```
 ```
+I strongly recommend you to run seed.py before testing the API with Postman collection. Thereby, you can have some data to benefit from.
